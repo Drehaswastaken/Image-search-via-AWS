@@ -7,7 +7,7 @@ export default function Home() {
     <div className="container">
       {" "}
       {/* Main container */}
-      <h1>Image-Search using AWS</h1>
+      <h1>Pictura.AI</h1>
       <p>
         Upload your images and let our AI categorize them. Then, effortlessly
         search through your visual library!
