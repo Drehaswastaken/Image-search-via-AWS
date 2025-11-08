@@ -1,36 +1,69 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🚀 Pictura.AI — AI-Powered Image Hub
 
-## Getting Started
+**Pictura.AI** is a **cloud-native, AI-driven image management web app** — think of it as a smarter version of Google Photos.  
+Users can upload images, have them **automatically analyzed and tagged by AI**, and **search** using natural, descriptive keywords.
 
-First, run the development server:
+This project leverages a **modern serverless stack** powered by **Next.js**, **AWS**, and **Vercel**.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+---
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🌟 Core Features
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+- **🖼️ Secure Image Upload** — Upload images directly from your browser to a **private AWS S3 bucket**.  
+- **🧠 Automatic AI Tagging** — Every uploaded image is analyzed using **AWS Rekognition**, generating descriptive tags like `"dog"`, `"beach"`, `"car"`, or `"person"`.  
+- **⚡ Instant, Tag-Based Search** — Search for images effortlessly through tags stored in **AWS DynamoDB**.  
+- **🔒 Secure Image Access** — Images are accessible only via **temporary signed URLs**, keeping your data fully private.  
+- **✨ Sleek Dark-Mode UI** — A beautiful, modern, and responsive interface built with **Next.js** and deployed on **Vercel**.  
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+## 🛠️ Tech Stack
 
-To learn more about Next.js, take a look at the following resources:
+| Component | Technology |
+|------------|-------------|
+| **Frontend** | [Next.js](https://nextjs.org/) |
+| **Deployment** | [Vercel](https://vercel.com/) |
+| **Image Storage** | [AWS S3](https://aws.amazon.com/s3/) |
+| **Database** | [AWS DynamoDB](https://aws.amazon.com/dynamodb/) |
+| **AI Tagging** | [AWS Rekognition](https://aws.amazon.com/rekognition/) |
+| **Security** | [AWS IAM](https://aws.amazon.com/iam/) |
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## ⚙️ Getting Started (Local Setup)
 
-## Deploy on Vercel
+### Prerequisites
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- Node.js (v18 or later)
+- An AWS Account
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+
+### 1. Configure AWS Services
+
+#### 🧑‍💻 IAM (Identity and Access Management)
+
+1. Create a new **IAM User** with **Programmatic Access**.  
+2. Attach the following policies:  
+   - `AmazonS3FullAccess`  
+   - `AmazonRekognitionFullAccess`  
+   - `AmazonDynamoDBFullAccess`  
+3. Save the generated **Access Key ID** and **Secret Access Key**.
+
+---
+
+#### ☁️ S3 (Simple Storage Service)
+
+1. Create a **private S3 Bucket** (e.g., `pictura-ai-bucket`).  
+2. Note your **Region** (e.g., `ap-south-1`).  
+3. Under **Permissions → CORS Configuration**, paste the following:
+
+   ```json
+   [
+     {
+       "AllowedHeaders": ["*"],
+       "AllowedMethods": ["PUT", "POST", "GET"],
+       "AllowedOrigins": ["http://localhost:3000"],
+       "ExposeHeaders": []
+     }
+   ]
