@@ -1,6 +1,6 @@
 # 🚀 Pictura.AI — AI-Powered Image Hub
 
-🌐 **Live Demo:** [https://image-search-via-aws.vercel.app/](https://image-search-via-aws.vercel.app/)
+🌐 **Live Demo:** [image-search-via-aws.vercel.app](https://pictura-ai-aws.vercel.app/)
 
 **Pictura.AI** is a **cloud-native, AI-driven image management web app** — think of it as a smarter version of Google Photos.  
 Users can upload images, have them **automatically analyzed and tagged by AI**, and **search** using natural, descriptive keywords.
