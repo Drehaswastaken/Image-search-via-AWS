@@ -265,4 +265,19 @@ input[type="file"] {
   .upload-btn {
     margin-left: 0; /* Stack it normally on mobile */
   }
+  /* --- Add these styles to the end of globals.css --- */
+
+  /* This makes sure the footer is always at the bottom, even on empty pages */
+  body {
+    min-height: 100vh;
+  }
+
+  /* This styles your new footer */
+  .site-footer {
+    text-align: center;
+    padding: 2rem 1rem;
+    font-size: 0.9rem;
+    color: #7a8299; /* A nice, subtle color for the dark theme */
+    margin-top: auto; /* Pushes it to the bottom */
+  }
 }
