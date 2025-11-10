@@ -14,6 +14,11 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* This makes sure the footer is always at the bottom, even on empty pages */
+body {
+  min-height: 100vh;
+}
+
 /* Main layout container */
 .container {
   max-width: 1200px;
@@ -43,8 +48,7 @@ hr {
 }
 
 /* Input Fields */
-input[type="text"],
-input[type="file"] {
+input[type="text"] {
   padding: 12px 15px;
   border: 1px solid #33415c;
   border-radius: 8px;
@@ -56,16 +60,20 @@ input[type="file"] {
   margin-right: 10px;
 }
 
-input[type="text"]:focus,
-input[type="file"]:focus {
+input[type="text"]:focus {
   border-color: #5b7efd;
   box-shadow: 0 0 0 3px rgba(91, 126, 253, 0.3);
   outline: none;
 }
 
+/* This removes the old, ugly styling from the hidden file input */
 input[type="file"] {
-  width: auto;
-  padding: 12px 15px;
+  display: none; /* This is the fallback */
+  padding: 0;
+  width: 0;
+  height: 0;
+  border: none;
+  background-color: transparent;
 }
 
 /* Buttons */
@@ -133,29 +141,7 @@ button:disabled {
   align-items: center;
 }
 
-/* Responsive adjustments */
-@media (max-width: 768px) {
-  .container {
-    margin: 1rem;
-    padding: 1.5rem;
-  }
-  .image-grid {
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-  }
-  .form-section {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-  input[type="text"],
-  input[type="file"] {
-    width: 100%;
-    margin-right: 0;
-    margin-bottom: 10px;
-  }
-}
-
-/* --- New styles for the hover effect --- */
-
+/* New styles for the hover effect */
 .image-overlay {
   position: absolute; /* Positions this on top of the image */
   bottom: 0;
@@ -200,9 +186,8 @@ button:disabled {
   font-weight: 500;
   color: #ffffff;
 }
-/* --- Add these styles to the end of globals.css --- */
 
-/* 1. This styles our new <label> to look like a button */
+/* New styles for custom file button */
 .file-upload-btn {
   /* Copy the existing button styles */
   padding: 12px 25px;
@@ -222,7 +207,6 @@ button:disabled {
   box-shadow: 0 6px 20px rgba(91, 126, 253, 0.4);
 }
 
-/* 2. This styles the "No file chosen" text */
 .file-name-display {
   flex-grow: 1; /* Takes up available space */
   margin-left: 15px;
@@ -233,26 +217,45 @@ button:disabled {
   text-overflow: ellipsis;
 }
 
-/* 3. This pushes the "Upload Image" button to the far right */
 .upload-btn {
   margin-left: auto;
 }
 
-/* 4. This removes the old, ugly styling from the hidden input */
-input[type="file"] {
-  display: none; /* This is the fallback */
-  padding: 0;
-  width: 0;
-  height: 0;
-  border: none;
+/* Footer styles */
+.site-footer {
+  /* Align it with the container */
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+
+  /* Explicitly make it transparent */
   background-color: transparent;
+
+  /* Existing styles */
+  text-align: center;
+  padding: 2rem 1rem;
+  font-size: 0.9rem;
+  color: #7a8299;
+  margin-top: auto;
 }
 
-/* 5. Keep the form-section responsive */
+/* Responsive adjustments */
 @media (max-width: 768px) {
+  .container {
+    margin: 1rem;
+    padding: 1.5rem;
+  }
+  .image-grid {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  }
   .form-section {
     flex-direction: column;
     align-items: stretch; /* Make items full-width */
+  }
+  input[type="text"] {
+    width: 100%;
+    margin-right: 0;
+    margin-bottom: 10px;
   }
 
   .file-name-display {
@@ -264,20 +267,5 @@ input[type="file"] {
 
   .upload-btn {
     margin-left: 0; /* Stack it normally on mobile */
-  }
-  /* --- Add these styles to the end of globals.css --- */
-
-  /* This makes sure the footer is always at the bottom, even on empty pages */
-  body {
-    min-height: 100vh;
-  }
-
-  /* This styles your new footer */
-  .site-footer {
-    text-align: center;
-    padding: 2rem 1rem;
-    font-size: 0.9rem;
-    color: #7a8299; /* A nice, subtle color for the dark theme */
-    margin-top: auto; /* Pushes it to the bottom */
   }
 }

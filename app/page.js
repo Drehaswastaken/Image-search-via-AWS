@@ -45,7 +45,7 @@ export default function Home() {
       </main>
 
       {/* --- This is your new footer --- */}
-      <footer className="site-footer">Made with ❤️ Darahaas</footer>
+      <footer className="site-footer">Made with ❤︎ Darahaas</footer>
       {/* --- End of new footer --- */}
     </div>
   );
