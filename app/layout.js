@@ -5,7 +5,7 @@ import { Inter } from "next/font/google"; // Import Inter font
 const inter = Inter({ subsets: ["latin"] }); // Initialize Inter font
 
 export const metadata = {
-  title: "Image Search App",
+  title: "Pictura.Ai",
   description: "Upload and search images with AI tags",
 };
 
