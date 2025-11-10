@@ -14,9 +14,6 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Add a Google Fonts import for 'Inter' if not already in your index.html/layout.js */
-/* You might need to add this to app/layout.js or in the <head> of your Next.js app */
-
 /* Main layout container */
 .container {
   max-width: 1200px;
@@ -114,6 +111,7 @@ button:disabled {
   overflow: hidden; /* Ensures image corners are rounded */
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
   transition: transform 0.2s ease;
+  position: relative; /* This is the parent for the absolute overlay */
 }
 
 .image-item:hover {
@@ -154,4 +152,51 @@ button:disabled {
     margin-right: 0;
     margin-bottom: 10px;
   }
+}
+
+/* --- New styles for the hover effect --- */
+
+.image-overlay {
+  position: absolute; /* Positions this on top of the image */
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0));
+  color: white;
+  padding: 1.5rem 1rem 1rem 1rem;
+
+  /* Hide it by default */
+  opacity: 0;
+  transform: translateY(10px); /* Start slightly lower */
+  transition: opacity 0.3s ease, transform 0.3s ease;
+
+  /* Prevents clicks on the overlay if needed */
+  pointer-events: none;
+}
+
+.image-item:hover .image-overlay {
+  opacity: 1; /* Show on hover */
+  transform: translateY(0); /* Move to final position */
+}
+
+.image-overlay p {
+  margin: 0 0 8px 0;
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: #f0f0f0;
+}
+
+.tags-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+.tag {
+  background: rgba(91, 126, 253, 0.9); /* Use your theme color */
+  padding: 3px 8px;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: #ffffff;
 }
