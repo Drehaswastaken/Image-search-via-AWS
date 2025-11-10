@@ -200,3 +200,69 @@ button:disabled {
   font-weight: 500;
   color: #ffffff;
 }
+/* --- Add these styles to the end of globals.css --- */
+
+/* 1. This styles our new <label> to look like a button */
+.file-upload-btn {
+  /* Copy the existing button styles */
+  padding: 12px 25px;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #5b7efd, #7a6bff);
+  color: white;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 4px 15px rgba(91, 126, 253, 0.3);
+  display: inline-block; /* Make it behave like a button */
+}
+
+.file-upload-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(91, 126, 253, 0.4);
+}
+
+/* 2. This styles the "No file chosen" text */
+.file-name-display {
+  flex-grow: 1; /* Takes up available space */
+  margin-left: 15px;
+  font-style: italic;
+  color: #999;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* 3. This pushes the "Upload Image" button to the far right */
+.upload-btn {
+  margin-left: auto;
+}
+
+/* 4. This removes the old, ugly styling from the hidden input */
+input[type="file"] {
+  display: none; /* This is the fallback */
+  padding: 0;
+  width: 0;
+  height: 0;
+  border: none;
+  background-color: transparent;
+}
+
+/* 5. Keep the form-section responsive */
+@media (max-width: 768px) {
+  .form-section {
+    flex-direction: column;
+    align-items: stretch; /* Make items full-width */
+  }
+
+  .file-name-display {
+    margin-left: 0;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    text-align: center;
+  }
+
+  .upload-btn {
+    margin-left: 0; /* Stack it normally on mobile */
+  }
+}
